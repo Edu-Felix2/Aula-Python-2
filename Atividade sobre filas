@@ -1,33 +1,34 @@
-class FilaDeSubstituicao:
+from queue import Queue
+
+class Estadio:
     def __init__(self):
-        self.fila = []
+        self.fila_torcedores = Queue()
 
-    def adicionar_jogador(self, jogador):
-        self.fila.append(jogador)
-        print(f"Jogador {jogador} adicionado à fila de substituição.")
+    def entrar_no_estadio(self, torcedor):
+        self.fila_torcedores.put(torcedor)
+        print(f"Torcedor {torcedor} entrou na fila para entrar no estádio.")
 
-    def realizar_substituicao(self):
-        if not self.fila:
-            print("Não há jogadores na fila de substituição.")
+    def permitir_entrada(self):
+        if not self.fila_torcedores.empty():
+            torcedor = self.fila_torcedores.get()
+            print(f"Torcedor {torcedor} entrou no estádio.")
         else:
-            jogador_substituido = self.fila.pop(0)
-            print(f"Jogador {jogador_substituido} substituído.")
+            print("O estádio está vazio. Não há torcedores na fila.")
 
     def mostrar_fila(self):
-        print("Fila de substituição:", self.fila)
-
+        print("Fila de torcedores:", list(self.fila_torcedores.queue))
 
 # Exemplo de uso
-fila_substituicao = FilaDeSubstituicao()
+estadio = Estadio()
 
-fila_substituicao.adicionar_jogador("Cristiano Ronaldo")
-fila_substituicao.adicionar_jogador("Messi")
-fila_substituicao.adicionar_jogador("Neymar")
+estadio.entrar_no_estadio("João")
+estadio.entrar_no_estadio("Maria")
+estadio.entrar_no_estadio("Carlos")
 
-fila_substituicao.mostrar_fila()
+estadio.mostrar_fila()
 
-fila_substituicao.realizar_substituicao()
-fila_substituicao.mostrar_fila()
+estadio.permitir_entrada()
+estadio.mostrar_fila()
 
-fila_substituicao.realizar_substituicao()
-fila_substituicao.mostrar_fila()
+estadio.permitir_entrada()
+estadio.mostrar_fila()
