@@ -1,0 +1,33 @@
+class FilaDeSubstituicao:
+    def __init__(self):
+        self.fila = []
+
+    def adicionar_jogador(self, jogador):
+        self.fila.append(jogador)
+        print(f"Jogador {jogador} adicionado à fila de substituição.")
+
+    def realizar_substituicao(self):
+        if not self.fila:
+            print("Não há jogadores na fila de substituição.")
+        else:
+            jogador_substituido = self.fila.pop(0)
+            print(f"Jogador {jogador_substituido} substituído.")
+
+    def mostrar_fila(self):
+        print("Fila de substituição:", self.fila)
+
+
+# Exemplo de uso
+fila_substituicao = FilaDeSubstituicao()
+
+fila_substituicao.adicionar_jogador("Cristiano Ronaldo")
+fila_substituicao.adicionar_jogador("Messi")
+fila_substituicao.adicionar_jogador("Neymar")
+
+fila_substituicao.mostrar_fila()
+
+fila_substituicao.realizar_substituicao()
+fila_substituicao.mostrar_fila()
+
+fila_substituicao.realizar_substituicao()
+fila_substituicao.mostrar_fila()
